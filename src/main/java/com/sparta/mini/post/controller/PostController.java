@@ -21,7 +21,7 @@ public class PostController {
 
     //    1. 게시글 작성 API
     @PostMapping("/post") public ResponseEntity<MessageResponseDto> createPost(@RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        postService.createPost(requestDto,userDetails.getMember);
+        postService.createPost(requestDto,userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 작성 성공"));
     }
     //    2. 게시글 정보 API
@@ -51,7 +51,7 @@ public class PostController {
     @DeleteMapping("/api/posts/{id}")
     public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.deletePost(id, userDetails.getMember());
-        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제 성공")));
+        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제 성공"));
     }
 
 
