@@ -1,5 +1,6 @@
 package com.sparta.mini.jwt;
 
+import com.sparta.mini.member.entity.MemberRoleEnum;
 import com.sparta.mini.security.UserDetailsServiceImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

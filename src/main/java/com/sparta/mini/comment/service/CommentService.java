@@ -6,6 +6,7 @@ import com.sparta.mini.comment.entity.Comment;
 import com.sparta.mini.comment.repository.CommentRepository;
 import com.sparta.mini.member.dto.MessageResponseDto;
 import com.sparta.mini.member.entity.Member;
+import com.sparta.mini.member.entity.MemberRoleEnum;
 import com.sparta.mini.post.entity.Post;
 import com.sparta.mini.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
-//    1. 댓글 작성 메서드
+    //    1. 댓글 작성 메서드
     @Transactional
     public CommentResponseDto createComment(Long postId, CommentRequestDto commentRequestDto, Member member) {
 //        게시글 존재 여부 확인. 없으면 예외처리
@@ -29,11 +30,10 @@ public class CommentService {
         );
         Comment comment = new Comment(post, member, commentRequestDto);
         commentRepository.save(comment);
-
         return new CommentResponseDto(comment);
     }
 
-//    2. 댓글 수정 메서드
+    //    2. 댓글 수정 메서드
     @Transactional
     public CommentResponseDto updateComment(Long postId, Long commentId, CommentRequestDto commentRequestDto, Member member) {
 //        게시글 존재 여부 확인. 없으면 예외처리
@@ -52,7 +52,7 @@ public class CommentService {
         return new CommentResponseDto(comment);
     }
 
-//    3. 댓글 삭제 메서드
+    //    3. 댓글 삭제 메서드
     @Transactional
     public MessageResponseDto deleteComment(Long postId, Long commentId , Member member) {
         //        게시글 존재 여부 확인. 없으면 예외처리
@@ -68,7 +68,7 @@ public class CommentService {
             throw new IllegalArgumentException("작성자만 수정할 수 있습니다.");
         }
         commentRepository.deleteById(commentId);
-        return MessageResponseDto(HttpStatus.OK, "댓글 삭제 성공");
+        return new MessageResponseDto(HttpStatus.OK, "댓글 삭제 성공");
     }
 
 
