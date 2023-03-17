@@ -17,7 +17,7 @@ public class Post extends Timestamped{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "post_id")
+    @Column(name = "POST_ID")
     private Long id;
 
     @Column(nullable = false)
@@ -32,18 +32,24 @@ public class Post extends Timestamped{
     @Column(nullable = false)
     private String specialty;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "POST")
     private List<Comment> commentList = new ArrayList<>();
     @ManyToOne
-    @JoinColumn(name = "member_id", nullable = false)
+    @JoinColumn(name = "MEMBER_ID", nullable = false)
     private Member member;
 
-    public Post(PostRequestDto requestDto/*,Member member*/) {
+    public Post(PostRequestDto requestDto,Member member) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.classNumber = requestDto.getClassNumber();
         this.specialty = requestDto.getSpecialty();
-//        this.member = member;
+        this.member = member;
     }
 
+    public void update(PostRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.classNumber = requestDto.getClassNumber();
+        this.specialty = requestDto.getSpecialty();
+    }
 }

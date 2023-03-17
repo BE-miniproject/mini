@@ -24,15 +24,15 @@ public class PostResponseDto {
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();
-//        this.nickname = post.getMember().getNickname;
+        this.nickname = post.getMember().getNickname;
         this.createdAt = post.getCreatedAt();
-//        List<Comment> comments = post.getCommentList();
-//        if (!comments.isEmpty()) {
-//            List<CommentResponseDto> commentList = new ArrayList<>();
-//            for (Comment comment : comments) {
-//                commentList.add(new CommentResponseDto(comment));
-//            }
-//            this.commentList = commentList;
-//        }
+        List<Comment> comments = post.getCommentList();
+        if (!comments.isEmpty()) {
+            List<CommentResponseDto> commentList = new ArrayList<>();
+            for (Comment comment : comments) {
+                commentList.add(new CommentResponseDto(comment));
+            }
+            this.commentList = commentList;
+        }
     }
 }
