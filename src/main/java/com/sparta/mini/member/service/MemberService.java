@@ -9,6 +9,7 @@ import com.sparta.mini.member.entity.Member;
 import com.sparta.mini.member.entity.MemberRoleEnum;
 import com.sparta.mini.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -65,8 +66,8 @@ public class MemberService {
         if (!member.getPassword().equals(password)){
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다");
         }
-       // response.addHeader(JwtUtil.AUTHORIZATION_HEADER, jwt.createToken(member.getUsername(), member.getRole()));
-        return new MessageResponseDto(StatusEnum.OK);
+        response.addHeader(JwtUtil.AUTHORIZATION_HEADER, jwt.createToken(member.getUsername(), member.getRole()));
+        return new MessageResponseDto(HttpStatus.OK, "로그인이 완료되었습니다.");
     }
 
 }

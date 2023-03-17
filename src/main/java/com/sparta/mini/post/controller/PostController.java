@@ -19,7 +19,7 @@ import java.util.List;
 public class PostController {
     private final PostService postService;
     @PostMapping("/post") public ResponseEntity<MessageResponseDto> createPost(@RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        postService.createPost(requestDto,userDetails.getMember);
+        postService.createPost(requestDto,userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 작성 성공"));
     }
 
@@ -43,7 +43,7 @@ public class PostController {
     @DeleteMapping("/api/posts/{id}")
     public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.deletePost(id, userDetails.getMember());
-        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제 성공")));
+        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제 성공"));
     }
 
 
