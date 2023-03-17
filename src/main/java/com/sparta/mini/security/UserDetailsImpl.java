@@ -1,6 +1,7 @@
 package com.sparta.mini.security;
 
 import com.sparta.mini.member.entity.Member;
+import com.sparta.mini.member.entity.MemberRoleEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,8 +26,8 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        UserRoleEnum role = member.getRole();
-        String authority = role.getAutority();
+        MemberRoleEnum role = member.getRole();
+        String authority = role.getAuthority();
 
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
         Collection<GrantedAuthority> authorities = new ArrayList<>();

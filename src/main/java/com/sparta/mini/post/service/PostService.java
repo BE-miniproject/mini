@@ -1,6 +1,7 @@
 package com.sparta.mini.post.service;
 
 import com.sparta.mini.member.entity.Member;
+import com.sparta.mini.member.entity.MemberRoleEnum;
 import com.sparta.mini.post.dto.PostRequestDto;
 import com.sparta.mini.post.dto.PostResponseDto;
 import com.sparta.mini.post.entity.Post;
@@ -36,7 +37,7 @@ public class PostService {
         Post post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 게시물은 존재하지 않습니다.")
         );
-        if (member.getRoleEnum() == UserRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
+        if (member.getRole() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
             post.update(requestDto);
             return new PostResponseDto(post);
         } else {
@@ -48,7 +49,7 @@ public class PostService {
         Post post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 게시물은 존재하지 않습니다.")
         );
-        if (member.getRoleEnum() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
+        if (member.getRole() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
             postRepository.deleteById(id);
             return id;
         } else {
