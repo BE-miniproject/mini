@@ -18,15 +18,19 @@ import java.util.List;
 @RequestMapping("/api")
 public class PostController {
     private final PostService postService;
+
+    //    1. 게시글 작성 API
     @PostMapping("/post") public ResponseEntity<MessageResponseDto> createPost(@RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.createPost(requestDto,userDetails.getMember);
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 작성 성공"));
     }
-
+    //    2. 게시글 정보 API
     @GetMapping("/post")
     public List<PostResponseDto> getPosts(){
         return postService.getPosts();
     }
+
+    //    3. 상세 게시글 정보 API
 
     @GetMapping("/post/{id}")
     public ResponseEntity<PostResponseDto> getpost(@PathVariable Long id){
@@ -34,11 +38,15 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
 
+    //    4. 게시글 수정 API
+
     @PatchMapping("/post/{id}")
     public ResponseEntity<MessageResponseDto> updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.update(id, requestDto, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 수정 성공"));
     }
+
+    //    5. 게시글 삭제 API
 
     @DeleteMapping("/api/posts/{id}")
     public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
