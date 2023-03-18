@@ -1,13 +1,10 @@
 package com.sparta.mini.post.dto;
 
-import com.sparta.mini.comment.dto.CommentResponseDto;
 import com.sparta.mini.post.entity.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
