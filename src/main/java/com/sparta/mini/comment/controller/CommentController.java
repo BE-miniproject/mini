@@ -27,7 +27,7 @@ public class CommentController {
                                                                    @RequestBody @Valid CommentRequestDto commentRequestDto,
                                                                    @AuthenticationPrincipal UserDetailsImpl userDetails) {
         commentService.createComment(postId, commentRequestDto, userDetails.getMember());
-        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "댓글 작성 완료"));
+        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "댓글 작성을 완료했습니다."));
     }
 
     //    2. 댓글 수정 API
@@ -36,7 +36,7 @@ public class CommentController {
                                             @RequestBody @Valid CommentRequestDto commentRequestDto,
                                             @AuthenticationPrincipal UserDetailsImpl userDetails) {
         commentService.updateComment(postId, commentId, commentRequestDto, userDetails.getMember());
-        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "댓글 수정 완료"));
+        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "댓글 수정을 완료했습니다."));
     }
 
     //    3. 댓글 삭제 API
