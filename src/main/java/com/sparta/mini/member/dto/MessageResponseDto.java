@@ -1,7 +1,9 @@
 package com.sparta.mini.member.dto;
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+@Getter
 public class MessageResponseDto {
     private int statusCode;
     private String msg;

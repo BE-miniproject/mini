@@ -46,7 +46,7 @@ public class CommentService {
         );
 //        ADMIN이 아닌 멤버가 댓글의 해당 작성자가 아닐때 예외 처리
         if (!comment.getMember().getId().equals(member.getId()) && !member.getRole().equals(MemberRoleEnum.ADMIN)) {
-            throw new IllegalArgumentException("작성자만 수정할 수 있습니다.");
+            throw new IllegalArgumentException("댓글 수정 권한이 없습니다.");
         }
         comment.update(commentRequestDto);
         return new CommentResponseDto(comment);
@@ -65,10 +65,10 @@ public class CommentService {
         );
 //        ADMIN이 아닌 멤버가 댓글의 해당 작성자가 아닐때 예외 처리
         if (!comment.getMember().getId().equals(member.getId()) && !member.getRole().equals(MemberRoleEnum.ADMIN)) {
-            throw new IllegalArgumentException("작성자만 수정할 수 있습니다.");
+            throw new IllegalArgumentException("댓글 삭제 권한이 없습니다.");
         }
         commentRepository.deleteById(commentId);
-        return new MessageResponseDto(HttpStatus.OK, "댓글 삭제 성공");
+        return new MessageResponseDto(HttpStatus.OK, "댓글 삭제를 완료했습니다.");
     }
 
 

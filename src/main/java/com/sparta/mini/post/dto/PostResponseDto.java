@@ -18,6 +18,8 @@ public class PostResponseDto {
     private String content;
     private String nickname;
     private LocalDateTime createdAt;
+    private String classNumber;
+    private String specialty;
     private List<CommentResponseDto> commentList = new ArrayList<>();
 
     public PostResponseDto(Post post) {
@@ -26,6 +28,8 @@ public class PostResponseDto {
         this.content = post.getContent();
         this.nickname = post.getMember().getNickname();
         this.createdAt = post.getCreatedAt();
+        this.classNumber = post.getClassNumber();
+        this.specialty = post.getSpecialty();
         List<Comment> comments = post.getCommentList();
         if (!comments.isEmpty()) {
             List<CommentResponseDto> commentList = new ArrayList<>();

@@ -1,6 +1,7 @@
 package com.sparta.mini.member.dto;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
@@ -12,7 +13,7 @@ public class SignupRequestDto {
 
     @NotNull(message = "username을 입력해주세요")
 //    @Pattern(regexp = "^*[a-z0-9]{5,12}$", message = "알파벳 소문자(a-z), 숫자(0~9)만 입력 가능")
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{5,12}", message = "알파벳 소문자(a-z), 숫자(0~9)만 입력 가능")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{5,12}", message = "알파벳 소문자(a-z), 숫자(0~9)만 입력 가능합니다.")
     //@Size(min = 5, message = "최소 5자 이상")
     private String username;
 
@@ -28,5 +29,5 @@ public class SignupRequestDto {
     private String email;
 
     private boolean admin = false;
-    private String adminToken = "";
+    private String admintoken = "";
 }

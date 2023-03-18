@@ -50,7 +50,7 @@ public class MemberService {
 
         MemberRoleEnum role = MemberRoleEnum.USER;
         if(signupRequestDto.isAdmin()){
-            if (!signupRequestDto.getAdminToken().equals(ADMIN_TOKEN)){
+            if (!signupRequestDto.getAdmintoken().equals(ADMIN_TOKEN)){
                 throw new IllegalArgumentException("관리자 암호가 틀립니다");
             }
             role = MemberRoleEnum.ADMIN;

@@ -37,7 +37,7 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<MessageResponseDto> login(@RequestBody LoginRequestDto loginRequestDto, HttpServletResponse response){
+    public ResponseEntity<MessageResponseDto> login(@Valid @RequestBody LoginRequestDto loginRequestDto, HttpServletResponse response){
         memberService.login(loginRequestDto, response);
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "로그인이 성공적으로 진행되었습니다."));
     }
