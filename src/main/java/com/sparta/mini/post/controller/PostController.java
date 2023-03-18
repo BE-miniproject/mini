@@ -48,7 +48,7 @@ public class PostController {
 
     //    5. 게시글 삭제 API
 
-    @DeleteMapping("/api/posts/{id}")
+    @DeleteMapping("/post/{id}")
     public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.deletePost(id, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제 성공"));

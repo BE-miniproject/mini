@@ -42,7 +42,7 @@ public class Post extends Timestamped{
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.classNumber = requestDto.getClassNumber();
-        this.specialty = requestDto.getSpecialty();
+        this.specialty = requestDto.getSpecialty();0
         this.member = member;
     }
 
