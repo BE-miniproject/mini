@@ -1,6 +1,7 @@
 package com.sparta.mini.post.controller;
 
 import com.sparta.mini.member.dto.MessageResponseDto;
+import com.sparta.mini.post.dto.PostEntireDto;
 import com.sparta.mini.post.dto.PostRequestDto;
 import com.sparta.mini.post.dto.PostResponseDto;
 import com.sparta.mini.post.service.PostService;
@@ -28,7 +29,7 @@ public class PostController {
 
 //    전체 게시글 조회 API
     @GetMapping("/post")
-    public List<PostResponseDto> getPosts(){
+    public List<PostEntireDto> getPosts(){
         return postService.getPosts();
     }
 

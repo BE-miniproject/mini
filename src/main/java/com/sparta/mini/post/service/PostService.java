@@ -2,6 +2,7 @@ package com.sparta.mini.post.service;
 
 import com.sparta.mini.member.entity.Member;
 import com.sparta.mini.member.entity.MemberRoleEnum;
+import com.sparta.mini.post.dto.PostEntireDto;
 import com.sparta.mini.post.dto.PostRequestDto;
 import com.sparta.mini.post.dto.PostResponseDto;
 import com.sparta.mini.post.entity.Post;
@@ -23,9 +24,9 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public List<PostResponseDto> getPosts() {
+    public List<PostEntireDto> getPosts() {
         List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
-        return posts.stream().map(PostResponseDto::new).toList();
+        return posts.stream().map(PostEntireDto::new).toList();
     }
 
     @Transactional(readOnly = true)
