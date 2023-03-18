@@ -17,7 +17,6 @@ public class Post extends Timestamped{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "POST_ID")
     private Long id;
 
     @Column(nullable = false)
