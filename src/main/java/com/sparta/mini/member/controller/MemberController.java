@@ -4,7 +4,6 @@ import com.sparta.mini.member.dto.LoginRequestDto;
 import com.sparta.mini.member.dto.MessageResponseDto;
 import com.sparta.mini.member.dto.SignupRequestDto;
 import com.sparta.mini.member.service.MemberService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

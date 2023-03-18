@@ -22,33 +22,33 @@ public class PostController {
     private final PostService postService;
 
 //    게시글 작성 API
-    @PostMapping("/post") public ResponseEntity<MessageResponseDto> createPost(@Valid @RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    @PostMapping("/posts") public ResponseEntity<MessageResponseDto> createPost(@Valid @RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.createPost(requestDto,userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 작성을 완료했습니다."));
     }
 
 //    전체 게시글 조회 API
-    @GetMapping("/post")
+    @GetMapping("/posts")
     public List<PostEntireDto> getPosts(){
         return postService.getPosts();
     }
 
 //    상세 게시글 조회 API
-    @GetMapping("/post/{postId}")
+    @GetMapping("/posts/{postId}")
     public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId){
         PostResponseDto postResponseDto = postService.getpost(postId);
         return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
 
 //    게시글 수정 API
-    @PatchMapping("/post/{postId}")
+    @PatchMapping("/posts/{postId}")
     public ResponseEntity<MessageResponseDto> updatePost(@PathVariable Long postId,@Valid @RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.update(postId, requestDto, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 수정을 완료했습니다."));
     }
 
 //    게시글 삭제 API
-    @DeleteMapping("/post/{postId}")
+    @DeleteMapping("/posts/{postId}")
     public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails){
         postService.deletePost(postId, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제를 완료했습니다."));
