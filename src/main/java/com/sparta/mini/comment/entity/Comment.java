@@ -41,8 +41,4 @@ public class Comment extends Timestamped {
         this.content = commentRequestDto.getContent();
     }
 
-    public LocalDateTime getCreatedAt() {
-        return super.getCreatedAt();
-    }
-
 }

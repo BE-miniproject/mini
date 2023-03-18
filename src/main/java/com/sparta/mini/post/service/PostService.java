@@ -22,11 +22,13 @@ public class PostService {
         return new PostResponseDto(post);
     }
 
+    @Transactional(readOnly = true)
     public List<PostResponseDto> getPosts() {
         List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
         return posts.stream().map(PostResponseDto::new).toList();
     }
 
+    @Transactional(readOnly = true)
     public PostResponseDto getpost(Long id) {
         Post post = postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시물은 존재하지 않습니다."));
         return new PostResponseDto(post);

@@ -8,16 +8,17 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Getter
-@Setter
 public class SignupRequestDto {
 
     @NotNull(message = "username을 입력해주세요")
-    @Pattern(regexp = "^*[a-z0-9]{5,12}$", message = "알파벳 소문자(a-z), 숫자(0~9)만 입력 가능")
+//    @Pattern(regexp = "^*[a-z0-9]{5,12}$", message = "알파벳 소문자(a-z), 숫자(0~9)만 입력 가능")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{5,12}", message = "알파벳 소문자(a-z), 숫자(0~9)만 입력 가능")
     //@Size(min = 5, message = "최소 5자 이상")
     private String username;
 
     @NotNull(message = "password을 입력해주세요")
-    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\\\d)(?=.*[@#$!%*?&])[A-Za-z\\\\d@#$!%*?&]{5,15}$\", message = \"5~15글자, 글자 1개, 숫자 1개, 특수문자 1개 꼭 입력해야합니다.")
+//    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\\\d)(?=.*[@#$!%*?&])[A-Za-z\\\\d@#$!%*?&]{5,15}$\", message = \"5~15글자, 글자 1개, 숫자 1개, 특수문자 1개 꼭 입력해야합니다.")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{5,15}$", message = "5~15글자, 글자 1개, 숫자 1개, 특수문자 1개 꼭 입력해야합니다.")
     //@Size(min = 8, message = "최소 5자 이상")
     private String password;
 

@@ -28,21 +28,21 @@ public class PostController {
         return postService.getPosts();
     }
 
-    @GetMapping("/post/{id}")
-    public ResponseEntity<PostResponseDto> getpost(@PathVariable Long id){
-        PostResponseDto postResponseDto = postService.getpost(id);
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId){
+        PostResponseDto postResponseDto = postService.getpost(postId);
         return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
 
-    @PatchMapping("/post/{id}")
-    public ResponseEntity<MessageResponseDto> updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        postService.update(id, requestDto, userDetails.getMember());
+    @PatchMapping("/post/{postId}")
+    public ResponseEntity<MessageResponseDto> updatePost(@PathVariable Long postId, @RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        postService.update(postId, requestDto, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 수정 성공"));
     }
 
-    @DeleteMapping("/api/posts/{id}")
-    public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        postService.deletePost(id, userDetails.getMember());
+    @DeleteMapping("/post/{postId}")
+    public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        postService.deletePost(postId, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 삭제 성공"));
     }
 
