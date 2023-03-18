@@ -2,6 +2,7 @@ package com.sparta.mini.post.service;
 
 import com.sparta.mini.member.entity.Member;
 import com.sparta.mini.member.entity.MemberRoleEnum;
+import com.sparta.mini.post.dto.PostEntireDto;
 import com.sparta.mini.post.dto.PostRequestDto;
 import com.sparta.mini.post.dto.PostResponseDto;
 import com.sparta.mini.post.entity.Post;
@@ -22,38 +23,40 @@ public class PostService {
         return new PostResponseDto(post);
     }
 
-    public List<PostResponseDto> getPosts() {
+    @Transactional(readOnly = true)
+    public List<PostEntireDto> getPosts() {
         List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
-        return posts.stream().map(PostResponseDto::new).toList();
+        return posts.stream().map(PostEntireDto::new).toList();
     }
 
+    @Transactional(readOnly = true)
     public PostResponseDto getpost(Long id) {
-        Post post = postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시물은 존재하지 않습니다."));
+        Post post = postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));
         return new PostResponseDto(post);
     }
 
     @Transactional
     public PostResponseDto update(Long id, PostRequestDto requestDto, Member member) {
         Post post = postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("해당 게시물은 존재하지 않습니다.")
+                () -> new IllegalArgumentException("해당 게시글은 존재하지 않습니다.")
         );
         if (member.getRole() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
             post.update(requestDto);
             return new PostResponseDto(post);
         } else {
-            throw new IllegalArgumentException("수정권한 없음");
+            throw new IllegalArgumentException("게시글 수정 권한이 없습니다.");
         }
     }
 
     public Long deletePost(Long id, Member member) {
         Post post = postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("해당 게시물은 존재하지 않습니다.")
+                () -> new IllegalArgumentException("해당 게시글은 존재하지 않습니다.")
         );
         if (member.getRole() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
             postRepository.deleteById(id);
             return id;
         } else {
-            throw new IllegalArgumentException("삭제 권한 없음");
+            throw new IllegalArgumentException("게시글 삭제 권한이 없습니다.");
         }
     }
 }
