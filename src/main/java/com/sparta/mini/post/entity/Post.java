@@ -32,8 +32,9 @@ public class Post extends Timestamped{
     @Column(nullable = false)
     private String specialty;
 
-    @OneToMany(mappedBy = "POST")
+    @OneToMany(mappedBy = "post")
     private List<Comment> commentList = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID", nullable = false)
     private Member member;

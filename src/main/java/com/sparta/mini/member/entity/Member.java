@@ -24,7 +24,7 @@ public class Member {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nickname;
 
     @Column(nullable = false, unique = true)
@@ -34,10 +34,12 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private MemberRoleEnum role;
 
-    public Member(String username, String password, MemberRoleEnum role){
+    public Member(String username, String password, MemberRoleEnum role, String email, String nickname){
         this.username =username;
         this.password = password;
         this.role = role;
+        this.email = email;
+        this.nickname = nickname;
     }
 
 }
