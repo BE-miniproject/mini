@@ -11,6 +11,7 @@ public class CommentResponseDto {
     private String nickname;
     private String content;
     private LocalDateTime createdAt;
+    private boolean isViewerRoleAdmin = false;
 
 
     public CommentResponseDto(Comment comment) {
@@ -18,5 +19,13 @@ public class CommentResponseDto {
         this.nickname = comment.getMember().getNickname();
         this.content = comment.getContent();
         this.createdAt = comment.getCreatedAt();
+    }
+
+    public CommentResponseDto(Comment comment, boolean isAdmin) {
+        this.id = comment.getId();
+        this.nickname = comment.getMember().getNickname();
+        this.content = comment.getContent();
+        this.createdAt = comment.getCreatedAt();
+        this.isViewerRoleAdmin = isAdmin;
     }
 }
