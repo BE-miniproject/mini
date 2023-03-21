@@ -33,9 +33,9 @@ jobs:
       uses: samin/mysql-action@v1
       with:
         character set server: 'utf8'
-        mysql database: 'ENC(hcf8qwjeIBxdjauNqEipd3dQBzzQtilhNe1R1XKdBLNgzDVXAjcbD1Iusfy1w7eHUdEXEKYY3HEieJU7Lt0csdQpSG3AZ5Hlsx86AOzFig8dQK/he8zoRLDZo4UdWVUeV9pIFhuHnic=)'
-        mysql user: 'ENC(cjZdzNuHGLToXMuBW5AUEw==)'
-        mysql password: 'ENC(K24TxxKZXRl29EF9x4c9crzGlMox9loh)'
+        mysql database: ${{ secrets.SQL_DB_URL }}
+        mysql user: 'admin'
+        mysql password: ${{ secrets.SQL_DB_PASSWORD }}
 
 #    - uses: actions/checkout@v3
 #    - run: touch ./src/main/resources/application.yml
