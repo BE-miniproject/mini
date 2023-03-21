@@ -1,5 +1,7 @@
 package com.sparta.mini.post.service;
 
+import com.sparta.mini.comment.entity.Comment;
+import com.sparta.mini.comment.repository.CommentRepository;
 import com.sparta.mini.member.entity.Member;
 import com.sparta.mini.member.entity.MemberRoleEnum;
 import com.sparta.mini.post.dto.PostEntireDto;
@@ -17,6 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
+
     @Transactional
     public PostResponseDto createPost(PostRequestDto requestDto, Member member) {
         Post post = postRepository.saveAndFlush(new Post(requestDto, member));
@@ -52,7 +56,9 @@ public class PostService {
         Post post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 게시글은 존재하지 않습니다.")
         );
+
         if (member.getRole() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
+            commentRepository.deleteAllByPost(post);
             postRepository.deleteById(id);
             return id;
         } else {
