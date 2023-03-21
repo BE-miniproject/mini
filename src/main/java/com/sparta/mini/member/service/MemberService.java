@@ -2,6 +2,7 @@ package com.sparta.mini.member.service;
 
 import com.sparta.mini.jwt.JwtUtil;
 import com.sparta.mini.member.dto.LoginRequestDto;
+import com.sparta.mini.member.dto.LoginResponseDto;
 import com.sparta.mini.member.dto.SignupRequestDto;
 import com.sparta.mini.member.entity.Member;
 import com.sparta.mini.member.entity.MemberRoleEnum;
@@ -61,7 +62,7 @@ public class MemberService {
         memberRepository.save(member);
     }
     @Transactional
-    public String login(LoginRequestDto loginRequestDto, HttpServletResponse response){
+    public LoginResponseDto login(LoginRequestDto loginRequestDto, HttpServletResponse response){
         String username = loginRequestDto.getUsername();
         String password = loginRequestDto.getPassword();
 
@@ -72,7 +73,7 @@ public class MemberService {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다");
         }
         response.addHeader(JwtUtil.AUTHORIZATION_HEADER, jwtUtil.createToken(member.getUsername(), member.getRole()));
-        return member.getNickname();
+        return new LoginResponseDto(member.getNickname());
     }
 
 }
