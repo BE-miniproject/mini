@@ -23,28 +23,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: touch ./src/main/resources/application.properties
+    - run: echo "${{ secrets.APPLICATION_PROPERTIES }}" > ./src/main/resources/application.properties
+    - run: cat ./src/main/resources/application.properties
+
+    - uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup MySQL
-      uses: samin/mysql-action@v1
-      with:
-        character set server: 'utf8'
-        mysql database: ${{ secrets.SQL_DB_URL }}
-        mysql user: 'admin'
-        mysql password: ${{ secrets.SQL_DB_PASSWORD }}
-
-#    - uses: actions/checkout@v3
-#    - run: touch ./src/main/resources/application.yml
-#    - run: echo "${{ secrets.AWS_JASYPT_KEY }}" > ./src/main/resources/application.yml
-#    - run: cat ./src/main/resources/application.yml
-
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
     - name: Build with Gradle
       run: ./gradlew clean build
       env:
@@ -73,3 +66,11 @@ jobs:
         --acl private \ 
         ./springboot-intro-build.zip s3://springboot-intro-build/
 
+
+#    - name: Setup MySQL
+#      uses: samin/mysql-action@v1
+#      with:
+#        character set server: 'utf8'
+#        mysql database: ${{ secrets.SQL_DB_URL }}
+#        mysql user: 'admin'
+#        mysql password: ${{ secrets.SQL_DB_PASSWORD }}
