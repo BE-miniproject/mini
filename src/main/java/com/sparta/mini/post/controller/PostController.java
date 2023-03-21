@@ -47,6 +47,7 @@ public class PostController {
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 수정을 완료했습니다."));
     }
 
+
 //    게시글 삭제 API
     @DeleteMapping("/posts/{postId}")
     public ResponseEntity<MessageResponseDto> deletePost(@PathVariable Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails){
