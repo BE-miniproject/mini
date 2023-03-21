@@ -2,7 +2,6 @@ package com.sparta.mini.post.dto;
 
 import com.sparta.mini.comment.dto.CommentResponseDto;
 import com.sparta.mini.comment.entity.Comment;
-import com.sparta.mini.member.entity.MemberRoleEnum;
 import com.sparta.mini.post.entity.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -54,7 +53,7 @@ public class PostResponseDto {
         if (!comments.isEmpty()) {
             List<CommentResponseDto> commentList = new ArrayList<>();
             for (Comment comment : comments) {
-                commentList.add(new CommentResponseDto(comment, isAdmin));
+                commentList.add(new CommentResponseDto(comment));
             }
             this.commentList = commentList;
         }
