@@ -35,8 +35,8 @@ public class PostController {
 
 //    상세 게시글 조회 API
     @GetMapping("/posts/{postId}")
-    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId){
-        PostResponseDto postResponseDto = postService.getpost(postId);
+    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        PostResponseDto postResponseDto = postService.getpost(postId, userDetails.getMember());
         return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
 
@@ -46,6 +46,7 @@ public class PostController {
         postService.update(postId, requestDto, userDetails.getMember());
         return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "게시글 수정을 완료했습니다."));
     }
+
 
 //    게시글 삭제 API
     @DeleteMapping("/posts/{postId}")
