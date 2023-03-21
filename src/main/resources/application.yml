@@ -7,7 +7,7 @@
 spring:
   datasource:
     url: ENC(hcf8qwjeIBxdjauNqEipd3dQBzzQtilhNe1R1XKdBLNgzDVXAjcbD1Iusfy1w7eHUdEXEKYY3HEieJU7Lt0csdQpSG3AZ5Hlsx86AOzFig8dQK/he8zoRLDZo4UdWVUeV9pIFhuHnic=)
-    username: ENC(cjZdzNuHGLToXMuBW5AUEw==)
+    username: mini
     password: ENC(K24TxxKZXRl29EF9x4c9crzGlMox9loh)
   jpa:
     hibernate:
