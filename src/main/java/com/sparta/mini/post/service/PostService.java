@@ -52,6 +52,7 @@ public class PostService {
         }
     }
 
+    @Transactional
     public Long deletePost(Long id, Member member) {
         Post post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 게시글은 존재하지 않습니다.")
