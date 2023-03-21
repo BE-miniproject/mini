@@ -7,7 +7,7 @@
 spring:
   datasource:
     url: ENC(hcf8qwjeIBxdjauNqEipd3dQBzzQtilhNe1R1XKdBLNgzDVXAjcbD1Iusfy1w7eHUdEXEKYY3HEieJU7Lt0csdQpSG3AZ5Hlsx86AOzFig8dQK/he8zoRLDZo4UdWVUeV9pIFhuHnic=)
-    username: mini
+    username: ENC(cjZdzNuHGLToXMuBW5AUEw==)
     password: ENC(K24TxxKZXRl29EF9x4c9crzGlMox9loh)
   jpa:
     hibernate:
@@ -17,5 +17,3 @@ jwt:
   secret:
     key: 7ZWt7ZW0OTntmZTsnbTtjIXtlZzqta3snYTrhIjrqLjshLjqs4TroZzrgpjslYTqsIDsnpDtm4zrpa3tlZzqsJzrsJzsnpDrpbzrp4zrk6TslrTqsIDsnpA=
 
-secret:
-  key: ${{ secrets.AWS_JASYPT_KEY }}

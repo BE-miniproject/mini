@@ -35,8 +35,8 @@ public class PostController {
 
 //    상세 게시글 조회 API
     @GetMapping("/posts/{postId}")
-    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId){
-        PostResponseDto postResponseDto = postService.getpost(postId);
+    public ResponseEntity<PostResponseDto> getPost(@PathVariable Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        PostResponseDto postResponseDto = postService.getpost(postId, userDetails.getMember());
         return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
 
