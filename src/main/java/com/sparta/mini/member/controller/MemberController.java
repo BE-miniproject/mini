@@ -20,14 +20,6 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/signup")
-    public ModelAndView signupPage(){
-        return new ModelAndView("signup");
-    }
-    @GetMapping("/login")
-    public ModelAndView loginPage(){
-        return new ModelAndView("login");
-    }
 
     @PostMapping("/signup")
     public ResponseEntity<MessageResponseDto> signup(@Valid @RequestBody SignupRequestDto signupRequestDto){
