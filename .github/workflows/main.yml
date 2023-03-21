@@ -29,10 +29,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - uses: actions/checkout@v3
-    - run: touch ./src/main/resources/application.yml
-    - run: echo "${{ secrets.AWS_JASYPT_KEY }}" > ./src/main/resources/application.yml
-    - run: cat ./src/main/resources/application.yml
+    - name: Setup MySQL
+      uses: samin/mysql-action@v1
+      with:
+        character set server: 'utf8'
+        mysql database: 'ENC(hcf8qwjeIBxdjauNqEipd3dQBzzQtilhNe1R1XKdBLNgzDVXAjcbD1Iusfy1w7eHUdEXEKYY3HEieJU7Lt0csdQpSG3AZ5Hlsx86AOzFig8dQK/he8zoRLDZo4UdWVUeV9pIFhuHnic=)'
+        mysql user: 'ENC(cjZdzNuHGLToXMuBW5AUEw==)'
+        mysql password: 'ENC(K24TxxKZXRl29EF9x4c9crzGlMox9loh)'
+
+#    - uses: actions/checkout@v3
+#    - run: touch ./src/main/resources/application.yml
+#    - run: echo "${{ secrets.AWS_JASYPT_KEY }}" > ./src/main/resources/application.yml
+#    - run: cat ./src/main/resources/application.yml
 
         
     - name: Grant execute permission for gradlew
