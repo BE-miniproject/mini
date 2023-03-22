@@ -25,7 +25,7 @@ public class MemberController {
     @PostMapping("/signup")
     public ResponseEntity<MessageResponseDto> signup(@Valid @RequestBody SignupRequestDto signupRequestDto){
         memberService.signup(signupRequestDto);
-        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "회원가입이 성공적으로 진행되었습니다."));
+        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "test23 회원가입이 성공적으로 진행되었습니다."));
     }
 
     @PostMapping("/login")
