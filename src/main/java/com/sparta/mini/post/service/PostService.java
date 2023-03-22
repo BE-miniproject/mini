@@ -49,6 +49,7 @@ public class PostService {
                 () -> new IllegalArgumentException("해당 게시글은 존재하지 않습니다.")
         );
         if (member.getRole() == MemberRoleEnum.ADMIN || member.getId().equals(post.getMember().getId())) {
+            post.update(requestDto);
             return new PostResponseDto(post);
         } else {
             throw new IllegalArgumentException("게시글 수정 권한이 없습니다.");
