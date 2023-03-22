@@ -8,8 +8,10 @@ import com.sparta.mini.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -25,7 +27,7 @@ public class MemberController {
     @PostMapping("/signup")
     public ResponseEntity<MessageResponseDto> signup(@Valid @RequestBody SignupRequestDto signupRequestDto){
         memberService.signup(signupRequestDto);
-        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, "test123123 회원가입이 성공적으로 진행되었습니다."));
+        return ResponseEntity.ok(new MessageResponseDto(HttpStatus.OK, " 회원가입이 성공적으로 진행되었습니다."));
     }
 
     @PostMapping("/login")

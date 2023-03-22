@@ -34,7 +34,7 @@ public class MemberService {
         Optional<Member> foundUsername = memberRepository.findByUsername(username);
 
         if(foundUsername.isPresent()){
-            throw new IllegalArgumentException("중복된 사용자가 존재합니다");
+            throw new IllegalArgumentException("중복된 ID가 존재합니다");
         }
 
         Optional<Member> foundEmail = memberRepository.findByEmail(email);
