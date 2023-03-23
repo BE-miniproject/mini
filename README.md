@@ -1,5 +1,5 @@
 # mini
-### TO-GTHER
+### TO-GATHER
 ![KakaoTalk_20230323_164440767_02](https://user-images.githubusercontent.com/97417978/227136881-c74d244a-c797-40f6-976b-fa80828d37b4.jpg)
 
 - 항해99 게더 내에서 발생하는 세션 및 스터디 등의 알림사항이나 관련 정보를 공유하는 커뮤니티 사이트 입니다.
