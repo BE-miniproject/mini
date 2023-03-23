@@ -16,9 +16,9 @@ public class Timestamped {
     @CreatedDate
     private LocalDateTime createdAt;
 
-//    @PrePersist
-//    public void prePersist() {
-//        this.createdAt = this.createdAt.plusHours(9);
-//    }
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = this.createdAt.plusHours(9);
+    }
 
 }
