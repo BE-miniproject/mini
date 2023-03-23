@@ -45,7 +45,7 @@ public class PostResponseDto {
         this.title = post.getTitle();
         this.content = post.getContent();
         this.nickname = post.getMember().getNickname();
-        this.createdAt = post.getCreatedAt();
+        this.createdAt = post.getCreatedAt().withNano(0);;
         this.classNumber = post.getClassNumber();
         this.specialty = post.getSpecialty();
         this.isViewerRoleAdmin = isAdmin;

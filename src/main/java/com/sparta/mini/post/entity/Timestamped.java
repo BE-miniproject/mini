@@ -6,6 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,4 +15,10 @@ import java.time.LocalDateTime;
 public class Timestamped {
     @CreatedDate
     private LocalDateTime createdAt;
+
+//    @PrePersist
+//    public void prePersist() {
+//        this.createdAt = this.createdAt.plusHours(9);
+//    }
+
 }
