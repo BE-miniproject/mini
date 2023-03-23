@@ -1,4 +1,4 @@
-# mini
+# MINI Project
 ### TO-GATHER
 ![KakaoTalk_20230323_164440767_02](https://user-images.githubusercontent.com/97417978/227136881-c74d244a-c797-40f6-976b-fa80828d37b4.jpg)
 
@@ -8,8 +8,8 @@
 <https://www.notion.so/2-dd05f16cb2c0414c8238ae1b74b83cb0>
 
 ## 주요기능
-- 회원가입
-- 로그인 & 로그아웃
+- 회원가입(USER / ADMIN)
+- 로그인 & 로그아웃(JWT Token 방식)
 - 게시글 전체 조회(페이지)
 - 게시글 상세 조회(작성, 수정, 삭제, 조회)
 - 댓글(작성, 수정, 삭제, 조회)
