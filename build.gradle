@@ -41,10 +41,7 @@ dependencies {
 	//  Jasypt 암호화
 //	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
 }
-jar {
-	enabled = false
-}
 
-task {
+test {
 	useJUnitPlatform()
 }
